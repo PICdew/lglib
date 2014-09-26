@@ -20,14 +20,16 @@ CC="C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-gcc.exe"
 AS="C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-gcc.exe"
 AR="C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-ar.exe"
 RM=del /Q
+HAL=../fat32lib/dspic_hal
+
 OPT=-O3
 
 #
 # target flags
 #
-p33f: CFLAGS=-omf=coff $(OPT) -I"..\fat32lib\dspic_hal" -I"..\lglib" -x c -Wall -mlarge-code -mlarge-data -fno-schedule-insns -fno-schedule-insns2 -mno-eds-warn -mcpu=33FJ256GP710A
+p33f: CFLAGS=-omf=coff $(OPT) -I"$(HAL)" -I"../lglib" -x c -Wall -mlarge-code -mlarge-data -fno-schedule-insns -fno-schedule-insns2 -mno-eds-warn -mcpu=33FJ256GP710A
 p33f: ASFLAGS=-omf=-coff -mcpu=33FJ256GP710A -c -Wa
-p33e: CFLAGS=-omf=coff $(OPT) -I"..\fat32lib\dspic_hal" -I"..\lglib" -x c -Wall -mlarge-code -mlarge-data -fno-schedule-insns -fno-schedule-insns2 -mno-eds-warn -mcpu=33EP512GP502
+p33e: CFLAGS=-omf=coff $(OPT) -I"$(HAL)" -I"../lglib" -x c -Wall -mlarge-code -mlarge-data -fno-schedule-insns -fno-schedule-insns2 -mno-eds-warn -mcpu=33EP512GP502
 p33e: ASFLAGS=-omf=coff -mcpu=33EP512GP502 -c -Wa
 ARFLAGS=-omf=coff r
 #
